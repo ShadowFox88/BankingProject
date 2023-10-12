@@ -4,28 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d33f78eb-0ef5-4bcf-bc5d-b54b5788aefe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/banking/BankAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/banking/EnvParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/banking/DatabaseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/banking/EnvParserTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/org/banking/DatabaseTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/org/banking/EnvParserTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todos.txt" afterDir="false" />
+    <list default="true" id="d33f78eb-0ef5-4bcf-bc5d-b54b5788aefe" name="Changes" comment="Created some a basic Account class, and setup a database connection test.">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/banking/database/Database_Functions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/banking/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/banking/BankAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/banking/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/banking/DatabaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/banking/BankAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/banking/BankAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/banking/EnvParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/banking/EnvParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/banking/DatabaseTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/banking/DatabaseTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Vahin Mehra &lt;vahin.mehra@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "customColor": "",
@@ -56,6 +74,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -67,14 +86,52 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1697134080382</updated>
-      <workItem from="1697134081437" duration="1260000" />
+      <workItem from="1697134081437" duration="8142000" />
     </task>
+    <task id="LOCAL-00001" summary="Created some a basic Account class, and setup a database connection test.">
+      <option name="closed" value="true" />
+      <created>1697135480064</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1697135480064</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Created some a basic Account class, and setup a database connection test.">
+      <option name="closed" value="true" />
+      <created>1697135498505</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1697135498505</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Created some a basic Account class, and setup a database connection test.">
+      <option name="closed" value="true" />
+      <created>1697135554848</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1697135554848</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Created some a basic Account class, and setup a database connection test." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created some a basic Account class, and setup a database connection test." />
   </component>
 </project>
