@@ -1,0 +1,14 @@
+Account Details:
+    Name /
+    Balance /
+    AccountID /
+    AccountType
+    Address /
+    Phone /
+    Date Of Birth /
+    Interest Rate /
+    Credit Limit /
+    Account Status
+
+Logs
+    Transaction History
