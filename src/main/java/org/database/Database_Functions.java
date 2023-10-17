@@ -1,4 +1,4 @@
-package org.banking.database;
+package org.database;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -59,7 +59,6 @@ public class Database_Functions {
             // Set parameters (new values)
             for (int i = 0; i < parameters.length; i++) {
                 statement.setObject(i + 1, parameters[i]);
-                System.out.println(parameters[i]);
             }
 
             // Execute the insert

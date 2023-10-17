@@ -11,4 +11,5 @@ Account Details:
     Account Status
 
 Logs
-    Transaction History
+    Transaction History /
+

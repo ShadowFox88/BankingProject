@@ -4,17 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d33f78eb-0ef5-4bcf-bc5d-b54b5788aefe" name="Changes" comment="Created some a basic Account class, and setup a database connection test.">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/banking/database/Database_Functions.java" afterDir="false" />
+    <list default="true" id="d33f78eb-0ef5-4bcf-bc5d-b54b5788aefe" name="Changes" comment="Added some database tests, and made the createBankAccount function add to the database.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/banking/BalanceOperations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gui/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/banking/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/banking/BankAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/banking/database/Database_Functions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/database/Database_Functions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/banking/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/banking/DatabaseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/banking/BankAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/banking/BankAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/banking/EnvParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/banking/EnvParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/banking/DatabaseTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/banking/DatabaseTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todos.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,10 +47,10 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2Wfqee0tWTLVYLQvDRq969Qxjvr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -74,11 +76,14 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Vahin\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d33f78eb-0ef5-4bcf-bc5d-b54b5788aefe" name="Changes" comment="" />
@@ -86,7 +91,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1697134080382</updated>
-      <workItem from="1697134081437" duration="8142000" />
+      <workItem from="1697134081437" duration="12211000" />
+      <workItem from="1697151162932" duration="91000" />
+      <workItem from="1697151259993" duration="5628000" />
+      <workItem from="1697545362934" duration="561000" />
     </task>
     <task id="LOCAL-00001" summary="Created some a basic Account class, and setup a database connection test.">
       <option name="closed" value="true" />
@@ -112,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697135554848</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added some database tests, and made the createBankAccount function add to the database.">
+      <option name="closed" value="true" />
+      <created>1697147042606</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1697147042606</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +148,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Created some a basic Account class, and setup a database connection test." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created some a basic Account class, and setup a database connection test." />
+    <MESSAGE value="Added some database tests, and made the createBankAccount function add to the database." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some database tests, and made the createBankAccount function add to the database." />
   </component>
 </project>

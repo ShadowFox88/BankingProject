@@ -1,9 +1,8 @@
 package org.banking;
 
-import org.banking.database.Database_Functions;
+import org.database.Database_Functions;
 import org.junit.Test;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
