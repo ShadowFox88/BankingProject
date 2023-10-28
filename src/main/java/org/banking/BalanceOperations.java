@@ -28,9 +28,9 @@ public class BalanceOperations {
         if (from.balance - amount < 0) {
             return false;
         } else {
-            Database_Functions.updateData(connection_details, sql_update, to.balance + amount, to.accountIdentifier.toString());
-            Database_Functions.updateData(connection_details, sql_update, from.balance - amount, from.accountIdentifier.toString());
-            Database_Functions.insertData(connection_details, "INSERT INTO Transactions (Sender, Receiver, Amount, SenderNote, Date) VALUES (?, ?, ?, ?, ?)", from.accountIdentifier.toString(), to.accountIdentifier.toString(), amount, note, LocalDateTime.now());
+            Database_Functions.updateData(sql_update, to.balance + amount, to.accountIdentifier.toString());
+            Database_Functions.updateData(sql_update, from.balance - amount, from.accountIdentifier.toString());
+            Database_Functions.insertData("INSERT INTO Transactions (Sender, Receiver, Amount, SenderNote, Date) VALUES (?, ?, ?, ?, ?)", from.accountIdentifier.toString(), to.accountIdentifier.toString(), amount, note, LocalDateTime.now());
             to.balance += amount;
             from.balance -= amount;
             return true;

@@ -49,38 +49,25 @@ public class DatabaseTest {
     @Test
     public void DatabaseGetterTest() throws IOException, SQLException {
         HashMap<String, String> EnvVariables = EnvParser.parseEnvFile("C:/Users/Vahin/IdeaProjects/BankingProject/.env");
-        ArrayList<String> connection_details = new ArrayList<>();
 
-        connection_details.add(EnvVariables.get("DATABASE_IP"));
-        connection_details.add(EnvVariables.get("DATABASE_PORT"));
-        connection_details.add(EnvVariables.get("DATABASE_NAME"));
-        connection_details.add(EnvVariables.get("DATABASE_USERNAME"));
-        connection_details.add(EnvVariables.get("DATABASE_PASSWORD"));
+        // Requires value to have been set already to the "TEST_VALUE" key from the .env file
 
-        HashMap<Integer, HashMap<String, String>> Results = Database_Functions.retrieveData(connection_details, "SELECT * FROM test_connection");
+        HashMap<Integer, HashMap<String, String>> Results = Database_Functions.retrieveData("SELECT * FROM test_connection");
 
-        assertEquals(Results.get(1).get("value"), "Hello World!");
+        assertEquals(Results.get(1).get("value"), EnvVariables.get("TEST_VALUE"));
     }
 
     @Test
-    public void DatabaseSetterTest() throws IOException, SQLException {
-        HashMap<String, String> EnvVariables = EnvParser.parseEnvFile("C:/Users/Vahin/IdeaProjects/BankingProject/.env");
-        ArrayList<String> connection_details = new ArrayList<>();
+    public void DatabaseSetterTest() throws SQLException {
         UUID uuid = UUID.randomUUID();
 
-        connection_details.add(EnvVariables.get("DATABASE_IP"));
-        connection_details.add(EnvVariables.get("DATABASE_PORT"));
-        connection_details.add(EnvVariables.get("DATABASE_NAME"));
-        connection_details.add(EnvVariables.get("DATABASE_USERNAME"));
-        connection_details.add(EnvVariables.get("DATABASE_PASSWORD"));
+        Database_Functions.insertData("INSERT INTO test_connection (value) VALUES (?)", uuid.toString());
 
-        Database_Functions.insertData(connection_details, "INSERT INTO test_connection (value) VALUES (?)", uuid.toString());
-
-        HashMap<Integer, HashMap<String, String>> Results = Database_Functions.retrieveData(connection_details, "SELECT * FROM test_connection");
+        HashMap<Integer, HashMap<String, String>> Results = Database_Functions.retrieveData("SELECT * FROM test_connection");
 
         assertEquals(Results.get(2).get("value"), uuid.toString());
 
-        Database_Functions.deleteData(connection_details, "DELETE FROM test_connection WHERE value = '" + uuid + "'");
+        Database_Functions.deleteData("DELETE FROM test_connection WHERE value = '" + uuid + "'");
     }
 }
 

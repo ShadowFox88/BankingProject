@@ -53,34 +53,26 @@ public class BankAccount {
     }
 
     public static BankAccount createBankAccount(String name, String address, String phoneNumber, String accountType, Date dateOfBirth) throws IOException, SQLException {
-        HashMap<String, String> EnvVariables = EnvParser.parseEnvFile("C:/Users/Vahin/IdeaProjects/BankingProject/.env");
-        ArrayList<String> connection_details = new ArrayList<>();
-        // need to give details in order IP, Port, Database Name, Username, Password
-        connection_details.add(EnvVariables.get("DATABASE_IP"));
-        connection_details.add(EnvVariables.get("DATABASE_PORT"));
-        connection_details.add(EnvVariables.get("DATABASE_NAME"));
-        connection_details.add(EnvVariables.get("DATABASE_USERNAME"));
-        connection_details.add(EnvVariables.get("DATABASE_PASSWORD"));
         LocalDateTime now = LocalDateTime.now();
 
         switch (accountType) {
             case "Debit" -> {
                 BankAccount bankAccount = new BankAccount(name, address, phoneNumber, "Debit", dateOfBirth, globalInterestRate, 0, "Open");
                 // values need to be uuid, name, address, balance, phone_number, account_type, date_of_birth, interest_rate, credit_limit, account_status
-                Database_Functions.insertData(connection_details, sql_insert, bankAccount.accountIdentifier.toString(), bankAccount.name, bankAccount.address, bankAccount.balance, bankAccount.phoneNumber, bankAccount.accountType, bankAccount.dateOfBirth, bankAccount.interestRate, bankAccount.creditLimit, bankAccount.accountStatus, now);
-                Database_Functions.insertData(connection_details, "INSERT INTO Logs (Date, UserID, Action, Details) VALUES (?, ?, ?, ?)", now, bankAccount.accountIdentifier.toString(), "User Created", "User " + bankAccount.name + " has been created with UUID: " + bankAccount.accountIdentifier + ", and has created a " + bankAccount.accountType + " account.");
+                Database_Functions.insertData(sql_insert, bankAccount.accountIdentifier.toString(), bankAccount.name, bankAccount.address, bankAccount.balance, bankAccount.phoneNumber, bankAccount.accountType, bankAccount.dateOfBirth, bankAccount.interestRate, bankAccount.creditLimit, bankAccount.accountStatus, now);
+                Database_Functions.insertData("INSERT INTO Logs (Date, UserID, Action, Details) VALUES (?, ?, ?, ?)", now, bankAccount.accountIdentifier.toString(), "User Created", "User " + bankAccount.name + " has been created with UUID: " + bankAccount.accountIdentifier + ", and has created a " + bankAccount.accountType + " account.");
                 return bankAccount;
             }
             case "Credit" -> {
                 BankAccount bankAccount = new BankAccount(name, address, phoneNumber, "Credit", dateOfBirth, globalInterestRate, 5000, "Open");
-                Database_Functions.insertData(connection_details, sql_insert, bankAccount.accountIdentifier.toString(), bankAccount.name, bankAccount.address, bankAccount.balance, bankAccount.phoneNumber, bankAccount.accountType, bankAccount.dateOfBirth, bankAccount.interestRate, bankAccount.creditLimit, bankAccount.accountStatus, now);
-                Database_Functions.insertData(connection_details, "INSERT INTO Logs (Date, UserID, Action, Details) VALUES (?, ?, ?, ?)", now, bankAccount.accountIdentifier.toString(), "User Created", "User " + bankAccount.name + " has been created with UUID: " + bankAccount.accountIdentifier + ", and has created a " + bankAccount.accountType + " account.");
+                Database_Functions.insertData(sql_insert, bankAccount.accountIdentifier.toString(), bankAccount.name, bankAccount.address, bankAccount.balance, bankAccount.phoneNumber, bankAccount.accountType, bankAccount.dateOfBirth, bankAccount.interestRate, bankAccount.creditLimit, bankAccount.accountStatus, now);
+                Database_Functions.insertData("INSERT INTO Logs (Date, UserID, Action, Details) VALUES (?, ?, ?, ?)", now, bankAccount.accountIdentifier.toString(), "User Created", "User " + bankAccount.name + " has been created with UUID: " + bankAccount.accountIdentifier + ", and has created a " + bankAccount.accountType + " account.");
                 return bankAccount;
             }
             case "Savings" -> {
                 BankAccount bankAccount = new BankAccount(name, address, phoneNumber, "Savings", dateOfBirth, globalInterestRate, 0, "Open");
-                Database_Functions.insertData(connection_details, sql_insert, bankAccount.accountIdentifier.toString(), bankAccount.name, bankAccount.address, bankAccount.balance, bankAccount.phoneNumber, bankAccount.accountType, bankAccount.dateOfBirth, bankAccount.interestRate, bankAccount.creditLimit, bankAccount.accountStatus, now);
-                Database_Functions.insertData(connection_details, "INSERT INTO Logs (Date, UserID, Action, Details) VALUES (?, ?, ?, ?)", now, bankAccount.accountIdentifier.toString(), "User Created", "User " + bankAccount.name + " has been created with UUID: " + bankAccount.accountIdentifier + ", and has created a " + bankAccount.accountType + " account.");
+                Database_Functions.insertData(sql_insert, bankAccount.accountIdentifier.toString(), bankAccount.name, bankAccount.address, bankAccount.balance, bankAccount.phoneNumber, bankAccount.accountType, bankAccount.dateOfBirth, bankAccount.interestRate, bankAccount.creditLimit, bankAccount.accountStatus, now);
+                Database_Functions.insertData("INSERT INTO Logs (Date, UserID, Action, Details) VALUES (?, ?, ?, ?)", now, bankAccount.accountIdentifier.toString(), "User Created", "User " + bankAccount.name + " has been created with UUID: " + bankAccount.accountIdentifier + ", and has created a " + bankAccount.accountType + " account.");
                 return bankAccount;
             }
             default -> {
@@ -90,17 +82,15 @@ public class BankAccount {
     }
 
     public static BankAccount getBankAccount(UUID uuid) throws SQLException, IOException {
-        HashMap<String, String> EnvVariables = EnvParser.parseEnvFile("C:/Users/Vahin/IdeaProjects/BankingProject/.env");
-        ArrayList<String> connection_details = new ArrayList<>();
-        // need to give details in order IP, Port, Database Name, Username, Password
-        connection_details.add(EnvVariables.get("DATABASE_IP"));
-        connection_details.add(EnvVariables.get("DATABASE_PORT"));
-        connection_details.add(EnvVariables.get("DATABASE_NAME"));
-        connection_details.add(EnvVariables.get("DATABASE_USERNAME"));
-        connection_details.add(EnvVariables.get("DATABASE_PASSWORD"));
-        HashMap<Integer, HashMap<String, String>> data = Database_Functions.retrieveData(connection_details, "SELECT * FROM Accounts WHERE uuid = '" + uuid + "'");
+
+        // Query the database for the account with the given UUID
+        HashMap<Integer, HashMap<String, String>> data = Database_Functions.retrieveData("SELECT * FROM Accounts WHERE uuid = '" + uuid + "'");
+
+        // Checks if the account exists
         if (data.size() == 1) {
+            // Fetches the data from the results
             HashMap<String, String> row = data.get(1);
+            // Creates a new BankAccount object with the data
             String name = row.get("name");
             String address = row.get("address");
             String phoneNumber = row.get("phone_number");
@@ -110,6 +100,7 @@ public class BankAccount {
             int creditLimit = Integer.parseInt(row.get("credit_limit"));
             String accountStatus = row.get("account_status");
             BankAccount bankAccount = new BankAccount(name, address, phoneNumber, accountType, dateOfBirth, interestRate, creditLimit, accountStatus);
+            // sets the uuid to ensure that it is not randomised
             bankAccount.accountIdentifier = uuid;
             bankAccount.balance = Double.parseDouble(row.get("balance"));
             return bankAccount;

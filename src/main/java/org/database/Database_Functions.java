@@ -1,16 +1,28 @@
 package org.database;
+import org.banking.EnvParser;
+
+import java.io.IOException;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.ArrayList;
 
 public class Database_Functions {
-    public static HashMap<Integer, HashMap<String, String>> retrieveData(ArrayList<String> connection_details, String sql) throws SQLException {
+    public static HashMap<Integer, HashMap<String, String>> retrieveData(String sql) throws SQLException {
         HashMap<Integer, HashMap<String, String>> result = new HashMap<>();
         Connection connection = null;
         try {
-            String url = "jdbc:mysql://" + connection_details.get(0) + ":" + connection_details.get(1) + "/" + connection_details.get(2);
-            String username = connection_details.get(3);
-            String password = connection_details.get(4);
+            // import details from .env file
+            HashMap<String, String> connectionDetails = EnvParser.parseEnvFile("C:/Users/Vahin/IdeaProjects/BankingProject/.env");
+
+            // Set connection parameters
+            String url = "jdbc:mysql://"
+                    + connectionDetails.get("DATABASE_IP")
+                    + ":"
+                    + connectionDetails.get("DATABASE_PORT")
+                    + "/" + connectionDetails.get("DATABASE_NAME");
+
+            String username = connectionDetails.get("DATABASE_USERNAME");
+            String password = connectionDetails.get("DATABASE_PASSWORD");
 
             // Establish a database connection
             connection = DriverManager.getConnection(url, username, password);
@@ -35,6 +47,8 @@ public class Database_Functions {
         } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Error retrieving data from the database.");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         } finally {
             if (connection != null) {
                 connection.close();
@@ -44,16 +58,24 @@ public class Database_Functions {
         return result;
     }
 
-    public static void insertData(ArrayList<String> connection_details, String sql, Object... parameters) throws SQLException {
+    public static void insertData(String sql, Object... parameters) throws SQLException {
         Connection connection = null;
         try {
-            String url = "jdbc:mysql://" + connection_details.get(0) + ":" + connection_details.get(1) + "/" + connection_details.get(2);
-            String username = connection_details.get(3);
-            String password = connection_details.get(4);
+            // import details from .env file
+            HashMap<String, String> connectionDetails = EnvParser.parseEnvFile("C:/Users/Vahin/IdeaProjects/BankingProject/.env");
+
+            // Set connection parameters
+            String url = "jdbc:mysql://"
+                    + connectionDetails.get("DATABASE_IP")
+                    + ":"
+                    + connectionDetails.get("DATABASE_PORT")
+                    + "/" + connectionDetails.get("DATABASE_NAME");
+
+            String username = connectionDetails.get("DATABASE_USERNAME");
+            String password = connectionDetails.get("DATABASE_PASSWORD");
 
             // Establish a database connection
             connection = DriverManager.getConnection(url, username, password);
-            System.out.println("Connected to the database.");
             // Create a SQL statement with parameter placeholders
             PreparedStatement statement = connection.prepareStatement(sql);
             // Set parameters (new values)
@@ -65,8 +87,10 @@ public class Database_Functions {
             int rowsAffected = statement.executeUpdate();
             System.out.println("Inserted " + rowsAffected + " row(s).");
         } catch (SQLException e) {
-            e.printStackTrace();
             System.err.println("Error inserting data into the database.");
+            throw new SQLIntegrityConstraintViolationException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         } finally {
             if (connection != null) {
                 connection.close();
@@ -74,13 +98,21 @@ public class Database_Functions {
         }
     }
 
-    public static void updateData(ArrayList<String> connection_details, String sql, Object... parameters) throws SQLException {
+    public static void updateData(String sql, Object... parameters) throws SQLException {
         Connection connection = null;
         try {
-            String url = "jdbc:mysql://" + connection_details.get(0) + ":" + connection_details.get(1) + "/" + connection_details.get(2);
-            String username = connection_details.get(3);
-            String password = connection_details.get(4);
+            // import details from .env file
+            HashMap<String, String> connectionDetails = EnvParser.parseEnvFile("C:/Users/Vahin/IdeaProjects/BankingProject/.env");
 
+            // Set connection parameters
+            String url = "jdbc:mysql://"
+                    + connectionDetails.get("DATABASE_IP")
+                    + ":"
+                    + connectionDetails.get("DATABASE_PORT")
+                    + "/" + connectionDetails.get("DATABASE_NAME");
+
+            String username = connectionDetails.get("DATABASE_USERNAME");
+            String password = connectionDetails.get("DATABASE_PASSWORD");
             // Establish a database connection
             connection = DriverManager.getConnection(url, username, password);
             // Create a SQL statement with parameter placeholders
@@ -94,7 +126,7 @@ public class Database_Functions {
             // Execute the update
             int rowsAffected = statement.executeUpdate();
             System.out.println("Updated " + rowsAffected + " row(s).");
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
             System.err.println("Error updating data in the database.");
         } finally {
@@ -104,12 +136,21 @@ public class Database_Functions {
         }
     }
 
-    public static void deleteData(ArrayList<String> connectionDetails, String sql) throws SQLException {
+    public static void deleteData(String sql) throws SQLException {
         Connection connection = null;
         try {
-            String url = "jdbc:mysql://" + connectionDetails.get(0) + ":" + connectionDetails.get(1) + "/" + connectionDetails.get(2);
-            String username = connectionDetails.get(3);
-            String password = connectionDetails.get(4);
+            // import details from .env file
+            HashMap<String, String> connectionDetails = EnvParser.parseEnvFile("C:/Users/Vahin/IdeaProjects/BankingProject/.env");
+
+            // Set connection parameters
+            String url = "jdbc:mysql://"
+                    + connectionDetails.get("DATABASE_IP")
+                    + ":"
+                    + connectionDetails.get("DATABASE_PORT")
+                    + "/" + connectionDetails.get("DATABASE_NAME");
+
+            String username = connectionDetails.get("DATABASE_USERNAME");
+            String password = connectionDetails.get("DATABASE_PASSWORD");
 
             // Establish a database connection
             connection = DriverManager.getConnection(url, username, password);
@@ -119,6 +160,8 @@ public class Database_Functions {
             // Execute the delete
             int rowsAffected = statement.executeUpdate();
             System.out.println("Deleted " + rowsAffected + " row(s).");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         } finally {
             if (connection != null) {
                 connection.close();
