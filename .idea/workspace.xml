@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d33f78eb-0ef5-4bcf-bc5d-b54b5788aefe" name="Changes" comment="Added some database tests, and made the createBankAccount function add to the database.">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="d33f78eb-0ef5-4bcf-bc5d-b54b5788aefe" name="Changes" comment="Edited some database functions, and made a simple login system.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/banking/BalanceOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/banking/BalanceOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/banking/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/banking/BankAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/banking/UserAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/banking/UserAuthentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/database/Database_Functions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/database/Database_Functions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/banking/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/banking/DatabaseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +87,8 @@
       <workItem from="1697644876707" duration="1000" />
       <workItem from="1698078893323" duration="1670000" />
       <workItem from="1698457914239" duration="58000" />
-      <workItem from="1698457980955" duration="8709000" />
+      <workItem from="1698457980955" duration="9810000" />
+      <workItem from="1698626031015" duration="1803000" />
     </task>
     <task id="LOCAL-00001" summary="Created some a basic Account class, and setup a database connection test.">
       <option name="closed" value="true" />
@@ -127,7 +122,23 @@
       <option name="project" value="LOCAL" />
       <updated>1697147042606</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Edited some database functions, and made a simple login system.">
+      <option name="closed" value="true" />
+      <created>1698528962022</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698528962022</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Edited some database functions, and made a simple login system.">
+      <option name="closed" value="true" />
+      <created>1698528984949</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698528984949</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,7 +159,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Created some a basic Account class, and setup a database connection test." />
     <MESSAGE value="Added some database tests, and made the createBankAccount function add to the database." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some database tests, and made the createBankAccount function add to the database." />
+    <MESSAGE value="Edited some database functions, and made a simple login system." />
+    <option name="LAST_COMMIT_MESSAGE" value="Edited some database functions, and made a simple login system." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -157,21 +169,6 @@
           <properties class="java.sql.SQLException" package="java.sql" />
           <option name="timeStamp" value="2" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/banking/UserAuthentication.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/banking/UserAuthentication.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/banking/UserAuthentication.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
